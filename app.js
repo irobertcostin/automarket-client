@@ -64,12 +64,19 @@ search.addEventListener("click",(e)=>{
 
         // get all cars by maker
         document.querySelector(".main-page-content-div").innerHTML="";
+        document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
         getAllCarsByMaker(filteredMaker);
+        let arr=[];
+        
+        
         
     } else {
         document.querySelector(".main-page-content-div").innerHTML="";
+        document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
         getAllCarsByModel(filteredModel);
     }
 
+    
 
+    
 })

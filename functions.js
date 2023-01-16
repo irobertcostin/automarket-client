@@ -33,6 +33,39 @@ function navbar(){
     return mainDiv;
 }
 
+// function to create a div for active filters display 
+
+function selectedFilters(arr){
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("selected-filters-div");
+
+    
+    
+    for(i=0;i<arr.length;i++){
+
+    let secondDiv=document.createElement("div");
+    secondDiv.classList.add("selected-filters-filter-div");
+    
+    let name = document.createElement("p")
+    name.id="filter-name";
+    name.textContent=arr[i];
+    secondDiv.appendChild(name);
+    
+    let close = document.createElement("button");
+    close.textContent="❌";
+    close.id="uncheck-a-filter";
+    secondDiv.appendChild(close)
+
+    mainDiv.appendChild(secondDiv);
+
+
+    }
+
+    return mainDiv;
+
+}
+
 // function to create testDriveAdd  
 
 function testDriveAdd() {
@@ -449,52 +482,52 @@ function createKmSelector() {
 } 
 
 // create radio inputs for fuel
-function createFuelType (){
+// function createFuelType (){
 
-    let mainDiv=document.createElement("div");
-    mainDiv.classList.add("fuel-type-filter")
+//     let mainDiv=document.createElement("div");
+//     mainDiv.classList.add("fuel-type-filter")
 
-    let label = document.createElement("label");
-    label.textContent="Fuel type"
-    mainDiv.appendChild(label);
+//     let label = document.createElement("label");
+//     label.textContent="Fuel type"
+//     mainDiv.appendChild(label);
 
-    let secondDiv=document.createElement("div");
-    secondDiv.classList.add("fuel-filters-div")
-    mainDiv.appendChild(secondDiv)
+//     let secondDiv=document.createElement("div");
+//     secondDiv.classList.add("fuel-filters-div")
+//     mainDiv.appendChild(secondDiv)
 
-    let diesel = document.createElement("input");
-    diesel.type="checkbox";
-    diesel.id="diesel"
-    diesel.textContent="Diesel";
-    secondDiv.appendChild(diesel)
+//     let diesel = document.createElement("input");
+//     diesel.type="checkbox";
+//     diesel.id="diesel"
+//     diesel.textContent="Diesel";
+//     secondDiv.appendChild(diesel)
 
-    let dieselLabel = document.createElement("label");
-    dieselLabel.textContent="Diesel"
-    secondDiv.appendChild(dieselLabel);
+//     let dieselLabel = document.createElement("label");
+//     dieselLabel.textContent="Diesel"
+//     secondDiv.appendChild(dieselLabel);
 
-    let gasoline = document.createElement("input");
-    gasoline.type="checkbox";
-    gasoline.id="gasoline"
-    gasoline.textContent="Gasoline";
-    secondDiv.appendChild(gasoline)
+//     let gasoline = document.createElement("input");
+//     gasoline.type="checkbox";
+//     gasoline.id="gasoline"
+//     gasoline.textContent="Gasoline";
+//     secondDiv.appendChild(gasoline)
 
-    let gasolinelLabel = document.createElement("label");
-    gasolinelLabel.textContent="Gasoline"
-    secondDiv.appendChild(gasolinelLabel);
+//     let gasolinelLabel = document.createElement("label");
+//     gasolinelLabel.textContent="Gasoline"
+//     secondDiv.appendChild(gasolinelLabel);
 
-    let gpl = document.createElement("input");
-    gpl.type="checkbox";
-    gpl.id="gpl"
-    gpl.textContent="GPL";
-    secondDiv.appendChild(gpl)
+//     let gpl = document.createElement("input");
+//     gpl.type="checkbox";
+//     gpl.id="gpl"
+//     gpl.textContent="GPL";
+//     secondDiv.appendChild(gpl)
 
-    let gplLabel = document.createElement("label");
-    gplLabel.textContent="GPL"
-    secondDiv.appendChild(gplLabel);
+//     let gplLabel = document.createElement("label");
+//     gplLabel.textContent="GPL"
+//     secondDiv.appendChild(gplLabel);
 
-    return mainDiv
+//     return mainDiv
 
-}
+// }
 
 
 // create search filtered button 
@@ -517,7 +550,7 @@ function filtersSection() {
     filtersSection.appendChild(createYearSelector())
     filtersSection.appendChild(createPriceSelector());
     filtersSection.appendChild(createKmSelector());
-    filtersSection.appendChild(createFuelType());
+    // filtersSection.appendChild(createFuelType());
     filtersSection.appendChild(searchFilteredButton());
     return filtersSection;
 }
