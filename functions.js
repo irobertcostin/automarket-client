@@ -135,6 +135,11 @@ function createMainPageContentGrid(){
     let mainDiv=document.createElement("div");
     mainDiv.classList.add("main-page-content-div");
 
+    let label = document.createElement("label");
+    mainDiv.appendChild(label);
+    label.textContent="All results"
+    label.id="main-page-content-div-label"
+
     // mainDiv.appendChild(homepageContentDiv1())
 
     return mainDiv
