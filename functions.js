@@ -718,9 +718,12 @@ async function getAllCarsByMaker(param){
 let response = await fetch(`http://localhost:3030/all-cars/cars-by-maker/maker=${param}`)
 response=await response.json();
 
+let contentGridParent = document.querySelector(".main-page-content-div")
+    contentGridParent.appendChild(homepageContentDiv1())
+    let contentGrid = document.querySelector(".homepage-content-div1")
 
 for(let i = 0; i<response.length;i++){
-    document.querySelector(".main-page-content-div").appendChild(createCard(response[i]))
+    contentGrid.appendChild(createCard(response[i]))
 }
 
 }
