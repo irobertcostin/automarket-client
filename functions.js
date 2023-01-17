@@ -5,7 +5,6 @@ function addSellOffer() {
     btn.textContent="✚ Sell now"
     btn.id="sell-now-btn"
 
-
     return btn;
 }
 
@@ -21,6 +20,9 @@ function navbar(){
     menuBtn.id = "menu-btn"
 
 
+    
+
+
     let appName = document.createElement("p");
     mainDiv.appendChild(appName);
     appName.id="app-name";
@@ -32,6 +34,8 @@ function navbar(){
 
     return mainDiv;
 }
+
+
 
 // function to create a div for active filters display 
 
@@ -651,7 +655,7 @@ function createYearInput() {
     mainDiv.classList.add("year-input")
 
     let label = document.createElement("label");
-    label.textContent="Production year"
+    label.textContent="Year"
     
 
     let input = document.createElement("input");
@@ -736,14 +740,59 @@ function createKmInput() {
     return mainDiv;
 } 
 
+// ad for new sell offer div 
+
+function createAdDiv (){
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("classic-ad-car");
+
+    let img = document.createElement("img");
+    img.src="./images/brands/classicad.png"
+    mainDiv.appendChild(img)
+
+
+    let textDiv=document.createElement("div")
+    textDiv.id="car-ad-desc"
+    mainDiv.appendChild(textDiv);
+
+    let p1 = document.createElement("p");
+    p1.textContent="Thousands of sellers and buyers trust us."
+    textDiv.appendChild(p1)
+    p1.id="car-ad-title"
+    let p2 = document.createElement("p");
+    p2.textContent="Romania's biggest vehicle marketplace"
+    textDiv.appendChild(p2)
+    let p3 = document.createElement("p");
+    p3.textContent="Over 200.000 daily unique visitors"
+    textDiv.appendChild(p3)
+    let p4 = document.createElement("p");
+    p4.textContent="More than 30.000 active sell offers"
+    textDiv.appendChild(p4)
+    let p5 = document.createElement("p");
+    p5.textContent="Functionalities which will guide you to success"
+    textDiv.appendChild(p5)
+    // thousands of sellers and buyers trust us.
+    // Romania/s biggest vehicle marketplace
+    // over 200.000 daily unique visitors
+    // More than 30.000 active sell offers
+    // Functionalities that will guide you to success
+
+    return mainDiv
+
+}
 
 
 // create new modal for new sell offers 
 function createNewSellOfferDiv(){
 
+    let mainDiv1=document.createElement("div");
+    mainDiv1.classList.add("sell-offer-div1");
+    
+
     let mainDiv=document.createElement("div");
     mainDiv.classList.add("sell-offer-div");
-
+    mainDiv1.appendChild(mainDiv)
 
     let label=document.createElement("label");
     label.classList.add("sell-offer-div-label");
@@ -776,10 +825,14 @@ function createNewSellOfferDiv(){
     let closeButton=document.createElement("button");
     closeButton.textContent="Close";
     closeButton.classList.add("sell-offer-div-close-button");
-    buttonsDiv.appendChild(closeButton);
+    // buttonsDiv.appendChild(closeButton);
 
-    return mainDiv
+    mainDiv1.appendChild(createAdDiv());
+
+
+    return mainDiv1;
 }
+
 
 
 

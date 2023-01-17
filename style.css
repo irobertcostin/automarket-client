@@ -151,8 +151,9 @@ body {
     padding: 10px;
     border: 0px;
     border-radius: 5px;
-    margin: auto;
     cursor: pointer;
+    margin: auto;
+    
     width: 90px;
 
     position: absolute;
@@ -242,6 +243,8 @@ transition: 0.5s;
 
 }
 
+
+
 .card-third-div {
     /* border: 2px solid green; */
 
@@ -256,7 +259,7 @@ transition: 0.5s;
 
     align-items: center;
     font-size: 13px;
-    font-weight: 200;
+    font-weight: 900;
 }
 
 #poster-card {
@@ -303,10 +306,13 @@ transition: 0.5s;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 5px;
 
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     animation: fadeIn 1s;
     /* animation: fadeOut 2s; */
+    font-family: 'Alegreya', serif;
+    color: #173445;
+    font-weight: 600;
 }
 
 .maker-filter{
@@ -525,7 +531,8 @@ select {
     margin-left: 20px;
     font-size: 20px;
     font-weight: bolder;
-    
+    font-family: 'Alegreya', serif;
+    color: #173445;
 }
 
 .selected-filters-div {
@@ -671,20 +678,141 @@ input {
 input:checked {
     background-color: red;
 }
+.sell-offer-div-label{
+    /* border: 2px solid green; */
+    margin-bottom: 30px;
+    font-weight: 1000;
+    font-family: 'Alegreya', serif;
+    color: #173445;
+}
+
+.sell-offer-div1 {
+    display: flex;
+    /* border: 2px solid blue; */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height:91vh;
+}
+
+#car-ad-title{
+    font-size: 25px;
+}
+
+#car-ad-desc{
+    width: 99%;
+    /* border: 2px solid green; */
+    text-align: center;
+    font-family: 'Alegreya', serif;
+    color: #173445;
+}
+
+.classic-ad-car{
+    /* border: 2px solid green; */
+    display: none;
+    height: 100%;
+    background-color: #eae9db;
+}
 
 .sell-offer-div{
 
-    border: 2px solid red;
-    width: 80%;
-    height: 75vh;
-    margin-top: 100px;
+    /* border: 2px solid red; */
+    min-width: 330px;
+    /* width: 60%; */
+    height: 500px;
+    margin: auto;
+    margin-top: 20px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    padding: 20px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, 
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 5px;
+
 }
+
+.sell-offer-div-second-div{
+    /* border: 2px solid red; */
+    width: 300px;
+    margin-top: 10px;
+    font-family: 'Alegreya', serif;
+    color: #173445;
+}
+
+.sell-offer-div-buttons-div{
+    /* border: 2px solid red; */
+    width: 300px;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sell-offer-div-add-button {
+    padding: 5px;
+    background-color: #18067c;
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sell-offer-div-add-button:hover{
+
+    background: rgb(16,6,133);
+    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
+
+    
+
+transform: scale(1.1);
+transition: 0.5s;
+
+} 
+
+.maker-input{
+
+display: flex;
+justify-content: space-between;
+margin-bottom: 10px;
+
+}
+
+.model-input{
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    }
+
+.km-input{
+
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+}
+
+.year-input{
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.price-input{
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
 
 .sell-offer-div-buttons-div {
     /* border: 2px solid green; */
@@ -820,6 +948,11 @@ input:checked {
         background-color: rgb(252, 197, 0);
         font-weight: bolder;
         padding: 10px;
+    }
+
+    .classic-ad-car{
+        /* border: 2px solid green; */
+        display: block;
     }
 
     /* .hide  {
