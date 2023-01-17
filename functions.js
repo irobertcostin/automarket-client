@@ -100,12 +100,19 @@ function createCard (obj){
     mainDiv.id=obj.id
 
     let delBtn = document.createElement("button");
-    delBtn.textContent="Delete";
+    // delBtn.textContent="Delete";
+    let btnImg = document.createElement("img");
+    btnImg.src="./images/remove-button.png"
+    delBtn.appendChild(btnImg)
+    
     delBtn.classList.add("delete-car-button")
     mainDiv.appendChild(delBtn)
 
 
-    
+    delBtn.addEventListener("click",()=>{
+
+        console.log(delBtn)
+    })
 
 
     let imgDiv = document.createElement("div");
