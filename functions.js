@@ -555,7 +555,85 @@ function filtersSection() {
     return filtersSection;
 }
 
+//function to create logo div 
 
+function logoDiv(obj){
+
+    let mainDiv=document.createElement("div");
+    mainDiv.id=obj;
+
+    let img = document.createElement("img");
+    if(obj=="Alfa Romeo"||obj=="Aston Martin"
+    ||obj=="Audi"
+    ||obj=="Bentley"
+    ||obj=="BMW"
+    ||obj=="Porsche"
+    ||obj=="Mercedes-Benz"
+    ||obj=="Rolls-Royce"
+    ||obj=="Dodge"
+    ||obj=="Ferrari"
+    ||obj=="Ford"
+    ||obj=="Jaguar"
+    ||obj=="Lamborghini"
+    ||obj=="Volkswagen"
+    ){
+        
+        img.src=`./images/brands/${obj}.png`
+
+        if(obj=="Alfa Romeo"||obj=="Aston Martin"
+        ||obj=="Audi"
+        ||obj=="Bentley"
+        ||obj=="BMW"){
+            img.style.height="60px"
+        }
+    }
+
+
+    
+    mainDiv.appendChild(img)
+
+    return mainDiv;
+}
+
+// create a section for logos div 
+
+function sectionforLogos(){
+
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add(`section-for-logos`);
+
+    return mainDiv;
+}
+
+// function to create a div with logos for filtering
+
+async function populateDivForLogos(){
+
+    let response = await fetch(`http://localhost:3030/all-cars/all-makers`)
+    response= await response.json();
+
+
+
+    for(i in response) {
+
+        if(response[i]=="Alfa Romeo"||response[i]=="Aston Martin"
+    ||response[i]=="Audi"
+    ||response[i]=="Bentley"
+    ||response[i]=="BMW"
+    ||response[i]=="Porsche"
+    ||response[i]=="Mercedes-Benz"
+    ||response[i]=="Rolls-Royce"
+    ||response[i]=="Ferrari"
+    ||response[i]=="Ford"
+    ||response[i]=="Jaguar"
+    ||response[i]=="Lamborghini"
+    ||response[i]=="Volkswagen"
+    ){
+        document.querySelector(".section-for-logos").appendChild(logoDiv(response[i]))
+    }
+        
+    }
+}
 
 // functions for the add car modal
 

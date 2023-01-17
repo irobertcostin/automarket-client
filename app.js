@@ -4,11 +4,12 @@ let container = document.querySelector(".container")
 container.appendChild(navbar());
 container.appendChild(testDriveAdd());
 container.appendChild(filtersSection());
+container.appendChild(sectionforLogos());
 container.appendChild(createMainPageContentGrid());
 getCars();
 getAllMakers();
 getAllModelsByMaker("Acura");
-
+populateDivForLogos();
 // filters section selectors 
 
 let makerSelector = document.querySelector(".maker-selector-filters");
@@ -64,15 +65,13 @@ search.addEventListener("click",(e)=>{
 
         // get all cars by maker
         document.querySelector(".main-page-content-div").innerHTML="";
-        document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
+        // document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
         getAllCarsByMaker(filteredMaker);
-        let arr=[];
-        
         
         
     } else {
         document.querySelector(".main-page-content-div").innerHTML="";
-        document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
+        // document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
         getAllCarsByModel(filteredModel);
     }
 
