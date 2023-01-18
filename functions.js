@@ -244,7 +244,7 @@ function createMakerSelector() {
     mainDiv.appendChild(selector)
 
     let testOption2=document.createElement("option");
-    selector.appendChild(testOption2);
+    // selector.appendChild(testOption2);
 
 
     return mainDiv;
@@ -659,6 +659,7 @@ function createYearInput() {
     
 
     let input = document.createElement("input");
+    input.type="number"
     mainDiv.appendChild(label);
     mainDiv.appendChild(input);
 
@@ -714,6 +715,7 @@ function createPriceInput() {
     
 
     let input = document.createElement("input");
+    input.type="number"
     mainDiv.appendChild(label);
     mainDiv.appendChild(input);
 
@@ -733,6 +735,7 @@ function createKmInput() {
     
 
     let input = document.createElement("input");
+    input.type="number"
     mainDiv.appendChild(label);
     mainDiv.appendChild(input);
 
@@ -807,10 +810,11 @@ function createNewSellOfferDiv(){
 
     secondDiv.appendChild(createMakerInput());
     secondDiv.appendChild(createModelInput())
-    secondDiv.appendChild(createKmInput())
     secondDiv.appendChild(createYearInput())
+    
+    
     secondDiv.appendChild(createPriceInput())
-
+    secondDiv.appendChild(createKmInput())
 
     let buttonsDiv=document.createElement("div");
     buttonsDiv.classList.add("sell-offer-div-buttons-div");

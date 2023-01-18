@@ -9,9 +9,11 @@ container.appendChild(sectionforLogos());
 container.appendChild(createMainPageContentGrid());
 getCars();
 getAllMakers();
-getAllModelsByMaker("Acura");
 populateDivForLogos();
 // filters section selectors 
+
+let previousPage = container.innerHTML
+
 
 let makerSelector = document.querySelector(".maker-selector-filters");
 let modelSelector = document.querySelector(".model-selector-filters");
@@ -22,12 +24,14 @@ let toPrice = document.querySelector(".price-to-selector-filters");
 let fromKm = document.querySelector(".km-from-selector-filters");
 let toKm = document.querySelector(".km-to-selector-filters");
 // let navbarBtn = document.getElementById(".navbar");
+// let filterButton=document.getElementById("menu-btn")
 
-container.addEventListener("click",(e)=>{
+container.addEventListener("click", async(e)=>{
 
     let obj =e.target;  
-    
-    
+    console.log(obj)
+    let filters=document.querySelector(".filters-section")
+    let filterButton=document.getElementById("menu-btn")
     
     if(obj.id==="sell-now-btn"&& obj.textContent==="✚ Sell now"){
         obj.textContent="Close"
@@ -54,9 +58,9 @@ container.addEventListener("click",(e)=>{
     populateDivForLogos();
 
     let makerSelector = document.querySelector(".maker-selector-filters");
-    makerSelector.addEventListener("change", (e)=>{
+    makerSelector.addEventListener("change", (f)=>{
         document.querySelector(".model-selector-filters").innerHTML=""
-        getAllModelsByMaker(e.target.value)
+        getAllModelsByMaker(f.target.value)
     })
     } else if (obj.id==="search-filtered-btn"){
 
@@ -78,6 +82,65 @@ container.addEventListener("click",(e)=>{
         getAllCarsByModel(filteredModel);
     }
 
+    } else if (obj.classList.contains("sell-offer-div-add-button")){
+
+        let maker = document.querySelector(".maker-input").lastElementChild;
+        let model = document.querySelector(".model-input").lastElementChild;
+        let year = document.querySelector(".year-input").lastElementChild;
+        let price = document.querySelector(".price-input").lastElementChild;
+        let km = document.querySelector(".km-input").lastElementChild;
+        
+        let car = {
+            maker:maker.value,
+            model:model.value,
+            year:year.value,
+            price:`$${price.value}`,
+            km:km.value
+        }
+        addCar(car)
+
+
+
+    document.getElementById("sell-now-btn").textContent="✚ Sell now"
+    filterButton.classList.remove("hide")
+    container.removeChild(document.querySelector(".sell-offer-div1"))
+    
+    container.appendChild(testDriveAdd());
+    container.appendChild(filtersSection());
+    container.appendChild(sectionforLogos());
+    container.appendChild(createMainPageContentGrid());
+    getCars();
+    getAllMakers();
+    populateDivForLogos();
+
+        let makerSelector = document.querySelector(".maker-selector-filters");
+        document.querySelector(".model-selector-filters").innerHTML=""
+        makerSelector.addEventListener("change", (g)=>{
+        document.querySelector(".model-selector-filters").innerHTML=""
+        getAllModelsByMaker(g.target.value)
+    })
+
+    }else if (obj.id==="app-name"){
+
+        container.innerHTML="";
+        container.appendChild(navbar());
+        container.appendChild(testDriveAdd());
+        container.appendChild(filtersSection());
+        container.appendChild(sectionforLogos());
+        container.appendChild(createMainPageContentGrid());
+        getCars();
+        getAllMakers();
+        populateDivForLogos();
+
+        
+    } 
+    
+    if (obj.id==="menu-btn"){
+        obj.id="menu-btn-filters-hidden"
+        filters.classList.add("hide")
+    }else if (obj.id==="menu-btn-filters-hidden"){
+        obj.id="menu-btn"
+        filters.classList.remove("hide")
     }
     
     
@@ -85,45 +148,23 @@ container.addEventListener("click",(e)=>{
 
 
 
-// makerSelector.addEventListener("change", (e)=>{
-//     let obj = e.target.value;
-//     document.querySelector(".model-selector-filters").innerHTML=""
-//     getAllModelsByMaker(obj)
-// })
-
-// filter section hide/show
-let filterButton=document.getElementById("menu-btn")
-filterButton.addEventListener("click",(e)=>{
-
-    let obj = e.target;
-    // console.log(obj);
-    let filters=document.querySelector(".filters-section")
-    if(filters.classList.contains("hide")==false){
-        filters.classList.add("hide");
-    } else {
-        filters.classList.remove("hide")
-    }
-    
-
+makerSelector.addEventListener("change", (e)=>{
+    let obj = e.target.value;
+    document.querySelector(".model-selector-filters").innerHTML=""
+    getAllModelsByMaker(obj)
 })
 
 
-let search = document.getElementById("search-filtered-btn")
-search.addEventListener("click",(e)=>{
 
-    let obj = e.target;
-    
-
-    
-
-    
-
-    
-})
-
-let previousPage = container.innerHTML
 
 
 
 // new add SELL NOW 
 
+// console.log(filters)
+// if(filters.classList.contains("hide")===false){
+
+
+// } else {
+// filters.classList.add("hide");
+// }
