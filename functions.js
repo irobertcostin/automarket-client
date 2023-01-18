@@ -251,6 +251,20 @@ function createMakerSelector() {
 }    
 
 
+// successfully added div 
+function createSuccessAdd(){
+    let mainDiv=document.createElement("div");
+    mainDiv.classList.add("confirmation-add")
+
+    let p = document.createElement("p");
+    p.textContent="test";
+    mainDiv.appendChild(p)
+
+    return mainDiv;
+
+}
+
+
 // populate maker selector
 function populateMakerSelector(obj) {
     let option = document.createElement("option");

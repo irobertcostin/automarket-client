@@ -10,10 +10,6 @@ container.appendChild(createMainPageContentGrid());
 getCars();
 getAllMakers();
 populateDivForLogos();
-// filters section selectors 
-
-let previousPage = container.innerHTML
-
 
 let makerSelector = document.querySelector(".maker-selector-filters");
 let modelSelector = document.querySelector(".model-selector-filters");
@@ -90,35 +86,48 @@ container.addEventListener("click", async(e)=>{
         let price = document.querySelector(".price-input").lastElementChild;
         let km = document.querySelector(".km-input").lastElementChild;
         
-        let car = {
-            maker:maker.value,
-            model:model.value,
-            year:year.value,
-            price:`$${price.value}`,
-            km:km.value
-        }
-        addCar(car)
+        if(maker.value!==""&&model.value!==""&&year.value>1950&&price.value>100&&km.value!==""){
 
+            let car = {
+                maker:maker.value,
+                model:model.value,
+                year:year.value,
+                price:`$${price.value}`,
+                km:km.value
+            }
+            addCar(car)
 
-
-    document.getElementById("sell-now-btn").textContent="✚ Sell now"
+            document.getElementById("sell-now-btn").textContent="✚ Sell now"
     filterButton.classList.remove("hide")
-    container.removeChild(document.querySelector(".sell-offer-div1"))
-    
-    container.appendChild(testDriveAdd());
-    container.appendChild(filtersSection());
-    container.appendChild(sectionforLogos());
-    container.appendChild(createMainPageContentGrid());
-    getCars();
-    getAllMakers();
-    populateDivForLogos();
+    // container.removeChild(document.querySelector(".sell-offer-div1"))
 
-        let makerSelector = document.querySelector(".maker-selector-filters");
-        document.querySelector(".model-selector-filters").innerHTML=""
-        makerSelector.addEventListener("change", (g)=>{
-        document.querySelector(".model-selector-filters").innerHTML=""
-        getAllModelsByMaker(g.target.value)
-    })
+    container.appendChild(createSuccessAdd());
+
+        }else {
+            alert("Please check input fields")
+        }
+
+        
+
+
+
+    
+    
+    // container.appendChild(testDriveAdd());
+    // container.appendChild(filtersSection());
+    // container.appendChild(sectionforLogos());
+    // container.appendChild(createMainPageContentGrid());
+    // getCars();
+    // getAllMakers();
+    // populateDivForLogos();
+
+    //     let makerSelector = document.querySelector(".maker-selector-filters");
+    //     document.querySelector(".model-selector-filters").innerHTML=""
+        
+    //     makerSelector.addEventListener("change", (g)=>{
+    //     document.querySelector(".model-selector-filters").innerHTML=""
+    //     getAllModelsByMaker(g.target.value)
+    //     })
 
     }else if (obj.id==="app-name"){
 
@@ -135,6 +144,8 @@ container.addEventListener("click", async(e)=>{
         
     } 
     
+
+
     if (obj.id==="menu-btn"){
         obj.id="menu-btn-filters-hidden"
         filters.classList.add("hide")
