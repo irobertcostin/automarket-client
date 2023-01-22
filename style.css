@@ -234,7 +234,7 @@ transition: 0.5s;
     height: 350px;
 
     padding: 0;
-    position: relative;
+    /* position: relative; */
 }
 
 .card:hover {
@@ -663,7 +663,7 @@ select {
 
     position: absolute;
 
-    right: 0;
+    right: 10px;
     top: 5px;
 
 }
@@ -729,6 +729,24 @@ input:checked {
     height:91vh;
 }
 
+.edit-offer-div-label{
+    /* border: 2px solid green; */
+    margin-bottom: 30px;
+    font-weight: 1000;
+    font-family: 'Alegreya', serif;
+    color: #173445;
+}
+
+.edit-offer-div1 {
+    display: flex;
+    /* border: 2px solid blue; */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height:91vh;
+}
+
+
 #car-ad-title{
     font-size: 25px;
 }
@@ -770,15 +788,82 @@ input:checked {
 
 }
 
+.edit-offer-div{
+
+    /* border: 2px solid red; */
+    min-width: 390px;
+    /* width: 60%; */
+    height: 500px;
+    margin: auto;
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, 
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 5px;
+
+}
+
 .sell-offer-div-second-div{
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 10px;
     font-family: 'Alegreya', serif;
     color: #173445;
+    /* display: flex; */
+    /* justify-content:; */
 }
 
+.edit-offer-div-second-div{
+    /* border: 2px solid red; */
+    width: 300px;
+    margin-top: 10px;
+    font-family: 'Alegreya', serif;
+    color: #173445;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.edit-maker-input {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-model-input {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-year-input {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-price-input {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-km-input {
+    display: flex;
+    justify-content: space-between;
+}
 .sell-offer-div-buttons-div{
+    /* border: 2px solid red; */
+    width: 300px;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-offer-div-buttons-div{
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 10px;
@@ -799,7 +884,26 @@ input:checked {
     cursor: pointer;
 }
 
+.edit-offer-div-add-button {
+    padding: 5px;
+    background-color: #18067c;
+    color: white;
+    font-size: 15px;
+    padding: 10px;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .sell-offer-div-add-button:hover{
+
+    background: rgb(16,6,133);
+    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
+transform: scale(1.1);
+transition: 0.5s;
+} 
+
+.edit-offer-div-add-button:hover{
 
     background: rgb(16,6,133);
     background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
@@ -852,6 +956,56 @@ margin-bottom: 10px;
     /* border: 2px solid green; */
     margin-top: auto;
 }
+
+.edit-offer-div-buttons-div {
+    /* border: 2px solid green; */
+    margin-top: auto;
+}
+
+
+
+
+#div-for-btn-create-card {
+    /* border: 2px solid red; */
+    position: relative;
+}
+
+#edit-card-btn-id {
+    border: 2px solid red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    background-color: #18067c;
+    color: white;
+    font-size: 12px;
+    padding: 7px;
+    border: 0px;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+#edit-card-btn-id:hover {
+    /* font-weight: 900; */
+    /* transition: 1s; */
+    background: rgb(16,6,133);
+    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
+
+    
+
+transform: scale(1.1);
+transition: 0.5s;
+}
+
+
+#delete-card-btn-id:hover {
+    transform: scale(1.1);
+transition: 0.5s;
+}
+
+
 
 @keyframes fadeIn {
     0% { opacity: 0; }

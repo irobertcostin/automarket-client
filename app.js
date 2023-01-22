@@ -25,13 +25,13 @@ let toKm = document.querySelector(".km-to-selector-filters");
 container.addEventListener("click", async(e)=>{
 
     let obj =e.target;  
-    console.log(obj)
+    // console.log(obj)
     let filters=document.querySelector(".filters-section")
     let filterButton=document.getElementById("menu-btn")
     
     if(obj.id==="sell-now-btn"&& obj.textContent==="✚ Sell now"){
         obj.textContent="Close"
-    
+        
         container.removeChild(document.querySelector(".test-drive-ad"))
         document.querySelector(".filters-section").classList.add("hide")
         container.removeChild(document.querySelector(".section-for-logos"))
@@ -142,7 +142,36 @@ container.addEventListener("click", async(e)=>{
         populateDivForLogos();
 
         
-    } 
+    } else if (obj.id==="delete-card-btn-id"){
+        // console.log(obj);
+        // console.log(obj.parentNode.parentNode.parentNode)
+
+        if(obj.parentNode.parentNode.parentNode.id!==undefined){
+ // await deleteCar(obj.parentNode.parentNode.id)   
+        console.log(obj.parentNode.parentNode.parentNode.id)
+
+        }
+       
+    }else if (obj.id==="edit-card-btn-id" && obj.textContent==="Edit"){
+
+        console.log(obj.parentNode.parentNode.id)
+        // console.log(container)
+        // let container1 = document.querySelector(".container")
+        container.appendChild(createEditDiv())
+        await getCarById(obj.parentNode.parentNode.id)
+
+        
+
+
+        // functie care preia id si returneaza masina ->
+        // functie care preia masina si populeaza campuri ->
+        // functie ce primeste ID si impinge masina deja modificata
+
+        // dupa edit
+        // pagina noua cu masina si editDiv in paralel
+
+
+    }
     
 
 

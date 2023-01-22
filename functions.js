@@ -1,3 +1,29 @@
+// retrieve API info - all cars  
+async function getCars(){
+    
+    
+
+
+    let response = await getCarsApi();
+
+    // response = await response.json();
+    
+    
+
+
+    // console.log(response.masini)
+    let contentGridParent = document.querySelector(".main-page-content-div")
+    contentGridParent.appendChild(homepageContentDiv1())
+    let contentGrid = document.querySelector(".homepage-content-div1")
+    for(i in response.cars) {
+        
+        contentGrid.appendChild(createCard(response.cars[i]))
+    }
+
+}
+
+
+
 // function to create new ad button
 
 function addSellOffer() {
@@ -103,25 +129,30 @@ function createCard (obj){
     mainDiv.classList.add("card");
     mainDiv.id=obj.id
 
+    let btnDiv=document.createElement("div");
+    btnDiv.id="div-for-btn-create-card"
+    mainDiv.appendChild(btnDiv)
+
+
     let delBtn = document.createElement("button");
     // delBtn.textContent="Delete";
     let btnImg = document.createElement("img");
     btnImg.src="./images/remove-button.png"
     delBtn.appendChild(btnImg)
-    
+    btnImg.id="delete-card-btn-id" 
     delBtn.classList.add("delete-car-button")
-    mainDiv.appendChild(delBtn)
+    btnDiv.appendChild(delBtn)
 
-
-    delBtn.addEventListener("click",()=>{
-
-        console.log(delBtn)
-    })
-
+    let editBtn = document.createElement("button");
+    editBtn.id="edit-card-btn-id"
+    editBtn.textContent="Edit"
+    btnDiv.appendChild(editBtn)
+    
 
     let imgDiv = document.createElement("div");
     imgDiv.classList.add("img-div")
     mainDiv.appendChild(imgDiv)
+    
 
     let poster = document.createElement("img");
     // poster.src="./images/COVER_Aventador-SVJ.webp"
@@ -159,10 +190,10 @@ function createCard (obj){
     mileage.id="mileage-card"
     mileage.textContent=obj.mileage + " km"
 
-    let engine = document.createElement("p");
-    engine.id="engine-card"
-    thirdDiv.appendChild(engine)
-    engine.textContent=obj.engine_size +" cm3";
+    // let engine = document.createElement("p");
+    // engine.id="engine-card"
+    // thirdDiv.appendChild(engine)
+    // engine.textContent=obj.engine_size +" cm3";
 
     let price = document.createElement("p");
     price.id="price-card"
@@ -203,25 +234,7 @@ function homepageContentDiv1(){
 
 
 
-// retrieve API info - all cars  
-async function getCars(){
-    
-    
 
-
-    let response = await fetch ("http://localhost:3030/all-cars");
-
-    response = await response.json();
-    // console.log(response.masini)
-    let contentGridParent = document.querySelector(".main-page-content-div")
-    contentGridParent.appendChild(homepageContentDiv1())
-    let contentGrid = document.querySelector(".homepage-content-div1")
-    for(i in response.cars) {
-        
-        contentGrid.appendChild(createCard(response.cars[i]))
-    }
-
-}
 
 
 
@@ -630,8 +643,88 @@ function sectionforLogos(){
     return mainDiv;
 }
 
-// function to create a div with logos for filtering
 
+
+
+
+
+// create editable div 
+
+function createEditDiv(){
+
+        let mainDiv1=document.createElement("div");
+        mainDiv1.classList.add("edit-offer-div1");
+        
+    
+        let mainDiv=document.createElement("div");
+        mainDiv.classList.add("edit-offer-div");
+        mainDiv1.appendChild(mainDiv)
+    
+        let label=document.createElement("label");
+        label.classList.add("edit-offer-div-label");
+        label.textContent="Edit your offer"
+        mainDiv.appendChild(label);
+    
+        let secondDiv=document.createElement("div");
+        secondDiv.classList.add("edit-offer-div-second-div");
+        mainDiv.appendChild(secondDiv);
+    
+        // second div 
+    
+        secondDiv.appendChild(createMakerInput());
+        secondDiv.firstElementChild.classList.remove("maker-input")
+        secondDiv.firstElementChild.classList.add("edit-maker-input")
+
+
+        secondDiv.appendChild(createModelInput())
+        secondDiv.firstElementChild.nextElementSibling.classList.remove("model-input")
+        secondDiv.firstElementChild.nextElementSibling.classList.add("edit-model-input")
+
+
+        secondDiv.appendChild(createYearInput())
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.classList.remove("year-input")
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.classList.add("edit-year-input")
+
+
+        
+        secondDiv.appendChild(createPriceInput())
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.classList.remove("price-input")
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.classList.add("edit-price-input")
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.type="text"
+
+
+        secondDiv.appendChild(createKmInput())
+
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.remove("km-input")
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.add("edit-km-input")
+        secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.type="text"
+    
+        let buttonsDiv=document.createElement("div");
+        buttonsDiv.classList.add("edit-offer-div-buttons-div");
+        mainDiv.appendChild(buttonsDiv);
+    
+    
+        let addButton=document.createElement("button");
+        addButton.textContent="Edit and publish your offer";
+        addButton.classList.add("edit-offer-div-add-button");
+        buttonsDiv.appendChild(addButton);
+    
+        let closeButton=document.createElement("button");
+        closeButton.textContent="Close";
+        closeButton.classList.add("edit-offer-div-close-button");
+        // buttonsDiv.appendChild(closeButton);
+    
+        // mainDiv1.appendChild(createAdDiv());
+    
+    return mainDiv;
+
+
+}
+
+
+
+
+// function to create a div with logos for filtering
 async function populateDivForLogos(){
 
     let response = await fetch(`http://localhost:3030/all-cars/all-makers`)
@@ -857,8 +950,9 @@ function createNewSellOfferDiv(){
 // retrieve allMakers API for the filter by maker section 
 async function getAllMakers() {
 
-    let response = await fetch ("http://localhost:3030/all-cars/all-makers")
-    response=await response.json();
+    let response = await getAllCarMakersApi();
+    // response=await response.json();
+    // console.log(response)
 
     // console.log(response)
     for(i in response) {
@@ -872,8 +966,8 @@ async function getAllMakers() {
 
 async function getAllModelsByMaker(param){
 
-    let response = await fetch(`http://localhost:3030/all-cars/models-by-maker/maker=${param}`)
-    response=await response.json();
+    let response = await getAllModelsByMakerApi(param)
+    // response=await response.json();
 
     document.querySelector(".model-selector-filters").appendChild(populateModelSelector(""))
 
@@ -890,8 +984,8 @@ async function getAllModelsByMaker(param){
 
 async function getAllCarsByModel(param){
 
-    let response = await fetch(`http://localhost:3030/all-cars/cars-by-model/model=${param}`)
-    response = await response.json();
+    let response = await getAllCarsByModelApi(param)
+    // response = await response.json();
 
     for(let i = 0; i<response.length;i++){
         document.querySelector(".main-page-content-div").appendChild(createCard(response[i]))
@@ -904,8 +998,8 @@ async function getAllCarsByModel(param){
 
 async function getAllCarsByMaker(param){
 
-let response = await fetch(`http://localhost:3030/all-cars/cars-by-maker/maker=${param}`)
-response=await response.json();
+let response = await getAllCarsByMakerApi(param);
+// response=await response.json();
 
 let contentGridParent = document.querySelector(".main-page-content-div")
     contentGridParent.appendChild(homepageContentDiv1())
@@ -914,6 +1008,33 @@ let contentGridParent = document.querySelector(".main-page-content-div")
 for(let i = 0; i<response.length;i++){
     contentGrid.appendChild(createCard(response[i]))
 }
+
+}
+
+
+// get Car by Id 
+
+async function getCarById(id) {
+
+    let response = await getCarByIdApi(id);
+    // response= await response.json();
+
+    let maker = document.querySelector(".edit-maker-input").lastElementChild
+    let model = document.querySelector(".edit-model-input").lastElementChild
+    let year = document.querySelector(".edit-year-input").lastElementChild
+    let price = document.querySelector(".edit-price-input").lastElementChild
+    let km = document.querySelector(".edit-km-input").lastElementChild
+
+    maker.value=response.maker;
+    model.value=response.model;
+    year.value=response.year;
+
+    console.log(price.value)
+    console.log(price.value)
+    price.value=response.price;
+    km.value=response.mileage;
+
+    console.log(response);
 
 }
 
