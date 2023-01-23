@@ -57,7 +57,52 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 
     cursor: pointer;
+
+
 }
+
+#app-name:hover {
+    transform: rotate(-0.0425turn);
+    transition: 0.5s;
+    box-shadow: rgba(40, 0, 74, 0.316) 0px 2px 5px;
+    padding: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 5px;
+    z-index: 7;
+
+
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+
 
 .confirmation-add {
     height: 80vh;
@@ -91,7 +136,7 @@ body {
     transform: rotate(1turn);
 }
 
-#menu-btn-filters-hidden{
+#menu-btn-filters-hidden {
     margin: 0;
     padding: 0;
     border: none;
@@ -123,8 +168,8 @@ body {
     margin-top: -40px;
     margin-bottom: 10px;
     background-image: url("./images/COVER_Aventador-SVJ.webp");
-    background-size:cover;
-    background-position:center;
+    background-size: cover;
+    background-position: center;
 }
 
 .test-drive-btn-div {
@@ -141,7 +186,7 @@ body {
     font-weight: 900;
     font-size: 12px;
     margin-left: 0px;
-    margin-top:80px;
+    margin-top: 80px;
     padding: 3px;
     /* padding-top: 10px; */
     /* padding-bottom: 10px; */
@@ -150,7 +195,7 @@ body {
     /* background-color: rgba(0, 0, 0, 0.871); */
 }
 
-.test-drive-btn-div:hover{
+.test-drive-btn-div:hover {
     cursor: pointer;
     /* width: 205px; */
     transition: 1s;
@@ -175,7 +220,7 @@ body {
     margin-right: 10px;
     cursor: pointer;
     width: 110px;
-    
+
 }
 
 #search-filtered-btn {
@@ -187,7 +232,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     margin: auto;
-    
+
     width: 90px;
 
     position: absolute;
@@ -200,22 +245,22 @@ body {
 #search-filtered-btn:hover {
     /* font-weight: 900; */
     /* transition: 1s; */
-    background: rgb(16,6,133);
-    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
+    background: rgb(16, 6, 133);
+    background: linear-gradient(135deg, rgba(16, 6, 133, 1) 0%, rgba(29, 60, 253, 1) 34%, rgb(203, 69, 252) 88%);
 
-    
 
-transform: scale(1.1);
-transition: 0.5s;
+
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 #sell-now-btn:hover {
     /* font-weight: 900; */
     /* transition: 1s; */
-    background: rgb(16,6,133);
-    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
-transform: scale(1.1);
-transition: 0.5s;
+    background: rgb(16, 6, 133);
+    background: linear-gradient(135deg, rgba(16, 6, 133, 1) 0%, rgba(29, 60, 253, 1) 34%, rgb(203, 69, 252) 88%);
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 .card {
@@ -226,8 +271,8 @@ transition: 0.5s;
     display: flex;
     flex-direction: column;
     margin: 20px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, 
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
     border-radius: 7px;
     width: 315px;
@@ -308,7 +353,7 @@ transition: 0.5s;
 #price-card {
     /* border: 2px solid red; */
     text-align: left;
-    
+
     color: red;
     font-size: 15px;
 
@@ -325,7 +370,7 @@ transition: 0.5s;
 } */
 
 
-.filters-section{
+.filters-section {
     /* border: 2px solid red; */
     position: relative;
     width: 90%;
@@ -349,7 +394,7 @@ transition: 0.5s;
     font-weight: 600;
 }
 
-.maker-filter{
+.maker-filter {
     /* border: 2px solid green; */
     width: 95%;
     display: flex;
@@ -361,7 +406,7 @@ transition: 0.5s;
     font-weight: 600;
 }
 
-.model-filter{
+.model-filter {
     /* border: 2px solid green; */
     width: 95%;
     display: flex;
@@ -405,7 +450,7 @@ transition: 0.5s;
 }
 
 
-.year-filter-from-to-div  select {
+.year-filter-from-to-div select {
     /* border: 2px solid magenta; */
     width: 95%;
 }
@@ -437,19 +482,20 @@ transition: 0.5s;
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
-    
+
     gap: 5px;
 }
 
 
-.price-filter-from-to-div  select {
+.price-filter-from-to-div select {
     /* border: 2px solid magenta; */
     width: 95%;
 }
 
 select {
-    
-    border: 1px solid #0891ad;;
+
+    border: 1px solid #0891ad;
+    ;
     border-radius: 2px;
     outline: none;
 }
@@ -484,11 +530,11 @@ select {
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
-    
+
     gap: 5px;
 }
 
-.km-filter-from-to-div  select {
+.km-filter-from-to-div select {
     /* border: 2px solid magenta; */
     width: 95%;
 }
@@ -496,7 +542,7 @@ select {
 .fuel-filters-div {
 
     display: flex;
-    
+
     align-items: center;
     /* justify-content: center; */
     /* border: 2px solid red; */
@@ -522,16 +568,16 @@ select {
 
     /* border: 2px solid red; */
     /* margin-bottom: 20px; */
-    
+
 
     position: relative;
 }
 
-#gasoline{
+#gasoline {
     margin-left: 5px;
 }
 
-#gpl{
+#gpl {
     margin-left: 5px;
 }
 
@@ -551,14 +597,14 @@ select {
 
 .main-page-content-div {
 
-    
+
     width: 100%;
 
     display: flex;
     flex-direction: column;
 
     padding: auto;
-    
+
 }
 
 #main-page-content-div-label {
@@ -581,7 +627,7 @@ select {
 
     overflow: scroll;
     padding: 2px;
-    
+
     margin-left: 10px;
 }
 
@@ -591,7 +637,7 @@ select {
     padding: 0;
 }
 
-#uncheck-a-filter{
+#uncheck-a-filter {
 
     width: 20px;
     height: 20px;
@@ -648,12 +694,12 @@ select {
     /* width: 55px; */
     height: 90px;
     width: auto;
-    
+
 }
 
 .delete-car-button {
     border: 0;
-    width:12%;
+    width: 12%;
 
     border-radius: 5px;
     /* background-color: #18067c; */
@@ -667,10 +713,19 @@ select {
     top: 5px;
 
 }
+
 .delete-car-button img {
     width: 30px;
     margin: 0;
     padding: 0;
+}
+
+
+#delete-car-btn-id:hover {
+
+    transform: scale(1.5);
+    transition: 0.5s;
+
 }
 
 .delete-car-button:hover {
@@ -685,7 +740,7 @@ select {
     transition: 1s;
 
     cursor: pointer;
-    
+
 }
 
 /* .selected-filters-filter-div:hover {
@@ -698,7 +753,7 @@ select {
 
 .hide {
     display: none;
-    animation:fadeOut 1s;
+    animation: fadeOut 1s;
 }
 
 select {
@@ -712,7 +767,8 @@ input {
 input:checked {
     background-color: red;
 }
-.sell-offer-div-label{
+
+.sell-offer-div-label {
     /* border: 2px solid green; */
     margin-bottom: 30px;
     font-weight: 1000;
@@ -726,10 +782,10 @@ input:checked {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height:91vh;
+    height: 91vh;
 }
 
-.edit-offer-div-label{
+.edit-offer-div-label {
     /* border: 2px solid green; */
     margin-bottom: 30px;
     font-weight: 1000;
@@ -743,15 +799,15 @@ input:checked {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height:91vh;
+    height: 91vh;
 }
 
 
-#car-ad-title{
+#car-ad-title {
     font-size: 25px;
 }
 
-#car-ad-desc{
+#car-ad-desc {
     width: 99%;
     /* border: 2px solid green; */
     text-align: center;
@@ -759,19 +815,19 @@ input:checked {
     color: #173445;
 }
 
-.classic-ad-car{
+.classic-ad-car {
     /* border: 2px solid green; */
     display: none;
     height: 100%;
     background-color: #eae9db;
 }
 
-.sell-offer-div{
+.sell-offer-div {
 
     /* border: 2px solid red; */
-    min-width: 330px;
+    width: 300px;
     /* width: 60%; */
-    height: 500px;
+    height: 400px;
     margin: auto;
     margin-top: 20px;
 
@@ -782,18 +838,27 @@ input:checked {
 
     padding: 20px;
 
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, 
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     border-radius: 5px;
 
 }
 
-.edit-offer-div{
+
+.div-for-edit-page {
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-offer-div {
 
     /* border: 2px solid red; */
-    min-width: 390px;
+    width: 300px;
     /* width: 60%; */
-    height: 500px;
+    height: 400px;
     margin: auto;
     margin-top: 20px;
 
@@ -804,13 +869,13 @@ input:checked {
 
     padding: 20px;
 
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, 
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     border-radius: 5px;
 
 }
 
-.sell-offer-div-second-div{
+.sell-offer-div-second-div {
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 10px;
@@ -820,7 +885,7 @@ input:checked {
     /* justify-content:; */
 }
 
-.edit-offer-div-second-div{
+.edit-offer-div-second-div {
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 10px;
@@ -837,23 +902,28 @@ input:checked {
     display: flex;
     justify-content: space-between;
 }
+
 .edit-model-input {
     display: flex;
     justify-content: space-between;
 }
+
 .edit-year-input {
     display: flex;
     justify-content: space-between;
 }
+
 .edit-price-input {
     display: flex;
     justify-content: space-between;
 }
+
 .edit-km-input {
     display: flex;
     justify-content: space-between;
 }
-.sell-offer-div-buttons-div{
+
+.sell-offer-div-buttons-div {
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 10px;
@@ -863,7 +933,7 @@ input:checked {
     justify-content: center;
 }
 
-.edit-offer-div-buttons-div{
+.edit-offer-div-buttons-div {
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 10px;
@@ -895,56 +965,56 @@ input:checked {
     cursor: pointer;
 }
 
-.sell-offer-div-add-button:hover{
+.sell-offer-div-add-button:hover {
 
-    background: rgb(16,6,133);
-    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
-transform: scale(1.1);
-transition: 0.5s;
-} 
+    background: rgb(16, 6, 133);
+    background: linear-gradient(135deg, rgba(16, 6, 133, 1) 0%, rgba(29, 60, 253, 1) 34%, rgb(203, 69, 252) 88%);
+    transform: scale(1.1);
+    transition: 0.5s;
+}
 
-.edit-offer-div-add-button:hover{
+.edit-offer-div-add-button:hover {
 
-    background: rgb(16,6,133);
-    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
+    background: rgb(16, 6, 133);
+    background: linear-gradient(135deg, rgba(16, 6, 133, 1) 0%, rgba(29, 60, 253, 1) 34%, rgb(203, 69, 252) 88%);
 
-    
 
-transform: scale(1.1);
-transition: 0.5s;
 
-} 
-
-.maker-input{
-
-display: flex;
-justify-content: space-between;
-margin-bottom: 10px;
+    transform: scale(1.1);
+    transition: 0.5s;
 
 }
 
-.model-input{
+.maker-input {
 
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    }
 
-.km-input{
-
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
 }
 
-.year-input{
+.model-input {
 
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-.price-input{
+.km-input {
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.year-input {
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.price-input {
 
     display: flex;
     justify-content: space-between;
@@ -990,31 +1060,44 @@ margin-bottom: 10px;
 #edit-card-btn-id:hover {
     /* font-weight: 900; */
     /* transition: 1s; */
-    background: rgb(16,6,133);
-    background: linear-gradient(135deg, rgba(16,6,133,1) 0%, rgba(29,60,253,1) 34%, rgb(203, 69, 252) 88%);
+    background: rgb(16, 6, 133);
+    background: linear-gradient(135deg, rgba(16, 6, 133, 1) 0%, rgba(29, 60, 253, 1) 34%, rgb(203, 69, 252) 88%);
 
-    
 
-transform: scale(1.1);
-transition: 0.5s;
+
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 
 #delete-card-btn-id:hover {
     transform: scale(1.1);
-transition: 0.5s;
+    transition: 0.5s;
 }
 
 
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 
 @media (min-width:500px) {
 
+
+    .sell-offer-div {
+        width: 450px;
+    }
+
+    .edit-offer-div {
+        width: 450px;
+    }
 
     .fuel-filters-div {
         /* border: 2px solid red; */
@@ -1032,11 +1115,11 @@ transition: 0.5s;
 
     #search-filtered-btn {
         bottom: 50px;
-    left: 67%;
+        left: 67%;
     }
 
     .test-drive-ad {
-        
+
         height: 200px;
         /* min-height: 250px; */
         /* display: flex;
@@ -1045,7 +1128,7 @@ transition: 0.5s;
         align-items: flex-end;
         justify-content: start; */
         margin-top: -55px;
-        
+
     }
 
     .filters-section {
@@ -1055,24 +1138,24 @@ transition: 0.5s;
         /* top: 200px; */
     }
 
-    
+
 
     .test-drive-btn-div img {
         /* margin-top: 100px; */
-        width: 40px;        
+        width: 40px;
     }
 
     .test-drive-btn-div {
         margin-top: 130px;
     }
 
-    
 
-    
+
+
 }
 
 
-@media (min-width:750px){
+@media (min-width:750px) {
 
     .test-drive-ad {
         height: 300px;
@@ -1082,7 +1165,7 @@ transition: 0.5s;
     }
 
     .test-drive-ad {
-        
+
         /* height: 200px; */
         min-height: 250px;
         display: flex;
@@ -1090,26 +1173,32 @@ transition: 0.5s;
 
         align-items: flex-end;
         justify-content: start;
-        
-        
+
+
     }
 
     .test-drive-btn-div {
-    
+
         width: 150px;
         border-radius: 5px;
-        
-        margin: 20px;
-        margin-top: 70px;    
-            font-size: 13px;
-            background-color: rgb(252, 197, 0);
-        }
 
-    
+        margin: 20px;
+        margin-top: 70px;
+        font-size: 13px;
+        background-color: rgb(252, 197, 0);
+    }
+
+
 }
 
 
-@media (min-width:1000px){
+@media (min-width:1000px) {
+
+    .div-for-edit-page {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+    }
 
     .test-drive-ad {
         height: 500px;
@@ -1126,19 +1215,19 @@ transition: 0.5s;
     }
 
     .test-drive-btn-div {
-    
-    width: 150px;
-    border-radius: 5px;
-    
-    margin: 20px;
-    margin-top: 60px;
+
+        width: 150px;
+        border-radius: 5px;
+
+        margin: 20px;
+        margin-top: 60px;
         font-size: 15px;
         background-color: rgb(252, 197, 0);
         font-weight: bolder;
         padding: 10px;
     }
 
-    .classic-ad-car{
+    .classic-ad-car {
         /* border: 2px solid green; */
         display: block;
     }

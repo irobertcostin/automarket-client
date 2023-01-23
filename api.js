@@ -91,3 +91,12 @@ async function deleteCar(id){
 
     return data.json();
 }
+
+
+async function editCarApi(car,id){
+
+    let data = await api('/edit-car/car-id='+id,"PUT",car);
+    return data.json();
+
+
+}

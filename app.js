@@ -28,6 +28,7 @@ container.addEventListener("click", async(e)=>{
     // console.log(obj)
     let filters=document.querySelector(".filters-section")
     let filterButton=document.getElementById("menu-btn")
+    let carID;
     
     if(obj.id==="sell-now-btn"&& obj.textContent==="✚ Sell now"){
         obj.textContent="Close"
@@ -43,8 +44,9 @@ container.addEventListener("click", async(e)=>{
     
     obj.textContent="✚ Sell now"
     filterButton.classList.remove("hide")
-    container.removeChild(document.querySelector(".sell-offer-div1"))
+    container.innerHTML="";
     
+    container.appendChild(navbar())
     container.appendChild(testDriveAdd());
     container.appendChild(filtersSection());
     container.appendChild(sectionforLogos());
@@ -153,25 +155,43 @@ container.addEventListener("click", async(e)=>{
         }
        
     }else if (obj.id==="edit-card-btn-id" && obj.textContent==="Edit"){
-
+        
         console.log(obj.parentNode.parentNode.id)
-        // console.log(container)
-        // let container1 = document.querySelector(".container")
-        container.appendChild(createEditDiv())
-        await getCarById(obj.parentNode.parentNode.id)
+        
+        container.innerHTML="";
+        container.appendChild(navbar())
+        container.appendChild(divForEditPage());
+        document.querySelector(".div-for-edit-page").appendChild(createEditDiv())
+        let masina = await getCarById(obj.parentNode.parentNode.id)
+        document.querySelector(".div-for-edit-page").insertBefore(createCard(masina),document.querySelector(".edit-offer-div"))
+        
+        document.getElementById("sell-now-btn").textContent="Close"
+        
+        // functie ce primeste ID si impinge masina deja modificata
+    
+    }else if(obj.classList.contains("edit-offer-div-add-button")){
+
+        let id = document.querySelector(".div-for-edit-page").firstElementChild.id
+        // console.log(id)
+        let car = {
+    
+            maker:document.querySelector(".edit-maker-input").lastElementChild.value,
+            model:document.querySelector(".edit-model-input").lastElementChild.value,
+            year:+document.querySelector(".edit-year-input").lastElementChild.value,
+            price:document.querySelector(".edit-price-input").lastElementChild.value,
+            mileage:+document.querySelector(".edit-km-input").lastElementChild.value
+        }
+
+        // console.log(car)
+        
+        await editCar(car,id);
 
         
-
-
-        // functie care preia id si returneaza masina ->
-        // functie care preia masina si populeaza campuri ->
-        // functie ce primeste ID si impinge masina deja modificata
-
-        // dupa edit
-        // pagina noua cu masina si editDiv in paralel
-
+        
 
     }
+
+
     
 
 
