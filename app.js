@@ -151,6 +151,9 @@ container.addEventListener("click", async(e)=>{
         if(obj.parentNode.parentNode.parentNode.id!==undefined){
  // await deleteCar(obj.parentNode.parentNode.id)   
         console.log(obj.parentNode.parentNode.parentNode.id)
+        await deleteCar(obj.parentNode.parentNode.parentNode.id)
+        document.querySelector(".homepage-content-div1").innerHTML="";
+        await getCars();
 
         }
        
