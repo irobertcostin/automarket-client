@@ -34,7 +34,7 @@ function navbar() {
     let menuBtn = document.createElement("button");
     mainDiv.appendChild(menuBtn);
     menuBtn.textContent = "⚙︎"
-    menuBtn.id = "menu-btn"
+    menuBtn.id = "menu-btn-filters-hidden"
 
 
 
@@ -217,9 +217,6 @@ function homepageContentDiv1() {
     let mainDiv = document.createElement("div");
     mainDiv.classList.add("homepage-content-div1");
 
-
-
-
     return mainDiv
 }
 
@@ -248,7 +245,7 @@ function createMakerSelector() {
     mainDiv.appendChild(selector)
 
     let testOption2 = document.createElement("option");
-    // selector.appendChild(testOption2);
+    selector.appendChild(testOption2);
 
 
     return mainDiv;
@@ -261,7 +258,19 @@ function createSuccessAdd() {
     mainDiv.classList.add("confirmation-add")
 
     let p = document.createElement("p");
-    p.textContent = "test";
+    p.textContent = "✔ Your ad has been published";
+    mainDiv.appendChild(p)
+
+    return mainDiv;
+
+}
+
+function createSuccessEdit() {
+    let mainDiv = document.createElement("div");
+    mainDiv.classList.add("confirmation-add")
+
+    let p = document.createElement("p");
+    p.textContent = "✔ Your ad has been edited";
     mainDiv.appendChild(p)
 
     return mainDiv;
@@ -294,7 +303,7 @@ function createModelSelector() {
     mainDiv.appendChild(selector)
 
     let testOption2 = document.createElement("option");
-    selector.appendChild(testOption2);
+    // selector.appendChild(testOption2);
 
 
     return mainDiv;
@@ -573,6 +582,7 @@ function filtersSection() {
 
     let filtersSection = document.createElement("section");
     filtersSection.classList.add("filters-section")
+    filtersSection.classList.add("hide")
     // filtersSection.classList.add("hide")
     filtersSection.appendChild(createMakerSelector())
     filtersSection.appendChild(createModelSelector());
@@ -688,7 +698,7 @@ function createEditDiv() {
 
     secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.remove("km-input")
     secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.classList.add("edit-km-input")
-    secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.type = "text"
+    secondDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.lastElementChild.type = "number"
 
     let buttonsDiv = document.createElement("div");
     buttonsDiv.classList.add("edit-offer-div-buttons-div");
@@ -960,7 +970,7 @@ async function getAllModelsByMaker(param) {
     let response = await getAllModelsByMakerApi(param)
     // response=await response.json();
 
-    document.querySelector(".model-selector-filters").appendChild(populateModelSelector(""))
+    // document.querySelector(".model-selector-filters").appendChild(populateModelSelector(""))
 
     for (i in response) {
 
@@ -1018,7 +1028,7 @@ async function getCarById(id) {
 
     maker.value = response.maker;
     model.value = response.model;
-    year.value = response.year;
+    year.value = +response.year;
     price.value = response.price;
     km.value = response.mileage;
 
@@ -1046,6 +1056,14 @@ async function editCar(car,id){
 
     await editCarApi(car,id);
 
+
+
+}
+
+
+function scrollTo(obj){
+
+    
 
 
 }

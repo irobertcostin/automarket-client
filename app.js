@@ -27,23 +27,36 @@ container.addEventListener("click", async(e)=>{
     let obj =e.target;  
     // console.log(obj)
     let filters=document.querySelector(".filters-section")
-    let filterButton=document.getElementById("menu-btn")
+    let filterButton=document.getElementById("menu-btn-filters-hidden")
     let carID;
     
     if(obj.id==="sell-now-btn"&& obj.textContent==="✚ Sell now"){
         obj.textContent="Close"
+        if(document.getElementById("menu-btn-filters-hidden")){
+
+            document.getElementById("menu-btn-filters-hidden").classList.add("hide")
+        }else if(document.getElementById("menu-btn")){
+
+            document.getElementById("menu-btn").classList.add("hide")
+        }
         
         container.removeChild(document.querySelector(".test-drive-ad"))
         document.querySelector(".filters-section").classList.add("hide")
         container.removeChild(document.querySelector(".section-for-logos"))
         container.removeChild(document.querySelector(".main-page-content-div"))
         container.removeChild(document.querySelector(".filters-section"))
-        filterButton.classList.add("hide")
+        if(filterButton){
+            // filterButton.classList.add("hide")
+        }
+        
         container.appendChild(createNewSellOfferDiv())
     } else if (obj.id==="sell-now-btn"&& obj.textContent==="Close"){
     
     obj.textContent="✚ Sell now"
-    filterButton.classList.remove("hide")
+    if(filterButton){
+        filterButton.classList.remove("hide")
+    }
+    
     container.innerHTML="";
     
     container.appendChild(navbar())
@@ -91,19 +104,26 @@ container.addEventListener("click", async(e)=>{
         if(maker.value!==""&&model.value!==""&&year.value>1950&&price.value>100&&km.value!==""){
 
             let car = {
-                maker:maker.value,
-                model:model.value,
-                year:year.value,
-                price:`$${price.value}`,
-                km:km.value
+                maker:maker.value.trim(),
+                model:model.value.trim(),
+                year:+year.value,
+                price:`$${price.value.trim()}`,
+                mileage:+km.value
             }
             addCar(car)
+            console.log(car.id)
+            // document.getElementById("sell-now-btn").textContent="✚ Sell now"
+            // filterButton.classList.remove("hide")
+            // container.removeChild(document.querySelector(".sell-offer-div1"))
 
-            document.getElementById("sell-now-btn").textContent="✚ Sell now"
-    filterButton.classList.remove("hide")
-    // container.removeChild(document.querySelector(".sell-offer-div1"))
+            container.appendChild(createSuccessAdd());
+            if(document.getElementById("menu-btn-filters-hidden")){
 
-    container.appendChild(createSuccessAdd());
+                document.getElementById("menu-btn-filters-hidden").classList.add("hide")
+            }else if(document.getElementById("menu-btn")){
+    
+                document.getElementById("menu-btn").classList.add("hide")
+            }
 
         }else {
             alert("Please check input fields")
@@ -143,23 +163,37 @@ container.addEventListener("click", async(e)=>{
         getAllMakers();
         populateDivForLogos();
 
+        let makerSelector = document.querySelector(".maker-selector-filters");
+        makerSelector.addEventListener("change", (f)=>{
+            document.querySelector(".model-selector-filters").innerHTML=""
+            getAllModelsByMaker(f.target.value)
+        })
         
     } else if (obj.id==="delete-card-btn-id"){
-        // console.log(obj);
-        // console.log(obj.parentNode.parentNode.parentNode)
+        
 
         if(obj.parentNode.parentNode.parentNode.id!==undefined){
- // await deleteCar(obj.parentNode.parentNode.id)   
+
         console.log(obj.parentNode.parentNode.parentNode.id)
         await deleteCar(obj.parentNode.parentNode.parentNode.id)
         document.querySelector(".homepage-content-div1").innerHTML="";
         await getCars();
-
+        document.querySelector(".homepage-content-div1").scrollIntoView();
+        document.querySelector(".section-for-logos").innerHTML=""
+        await populateDivForLogos();
+        document.querySelector(".maker-selector-filters").innerHTML="";
+        document.querySelector(".maker-selector-filters").appendChild(document.createElement("option"))
+        await getAllMakers();
         }
-       
+
+        let makerSelector = document.querySelector(".maker-selector-filters");
+    makerSelector.addEventListener("change", (f)=>{
+        document.querySelector(".model-selector-filters").innerHTML=""
+        getAllModelsByMaker(f.target.value)
+    })
+    
     }else if (obj.id==="edit-card-btn-id" && obj.textContent==="Edit"){
         
-        console.log(obj.parentNode.parentNode.id)
         
         container.innerHTML="";
         container.appendChild(navbar())
@@ -170,8 +204,15 @@ container.addEventListener("click", async(e)=>{
         
         document.getElementById("sell-now-btn").textContent="Close"
         
+        if(document.getElementById("menu-btn-filters-hidden")){
+
+            document.getElementById("menu-btn-filters-hidden").classList.add("hide")
+        }else if(document.getElementById("menu-btn")){
+
+            document.getElementById("menu-btn").classList.add("hide")
+        }
         // functie ce primeste ID si impinge masina deja modificata
-    
+        
     }else if(obj.classList.contains("edit-offer-div-add-button")){
 
         let id = document.querySelector(".div-for-edit-page").firstElementChild.id
@@ -189,7 +230,13 @@ container.addEventListener("click", async(e)=>{
         
         await editCar(car,id);
 
+        let masina = await getCarById(id);
+        document.querySelector(".div-for-edit-page").removeChild(document.querySelector(".card"))
+        document.querySelector(".div-for-edit-page").insertBefore(createCard(masina),document.querySelector(".edit-offer-div"))
         
+
+        // document.querySelector(".div-for-edit-page").remove(document.querySelector(".card"))
+        container.appendChild(createSuccessEdit())
         
 
     }
@@ -222,12 +269,11 @@ makerSelector.addEventListener("change", (e)=>{
 
 
 
-// new add SELL NOW 
+// BUGS 
 
-// console.log(filters)
-// if(filters.classList.contains("hide")===false){
-
-
-// } else {
-// filters.classList.add("hide");
-// }
+// click search with no params displays nothing 
+// append cars by maker when clicking on brands 
+// API for year filters 
+// API for price filters 
+// API for mileage filters 
+// publish after editing nothing happes
