@@ -624,7 +624,7 @@ function logoDiv(obj) {
             || obj == "Audi"
             || obj == "Bentley"
             || obj == "BMW") {
-            img.style.height = "60px"
+            img.style.height = "40px"
         }
     }
 

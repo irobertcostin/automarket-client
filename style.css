@@ -286,8 +286,8 @@ body {
     
 
     border-radius: 7px;
-    width: 315px;
-    height: 350px;
+    width: 225px;
+    height: 250px;
 
     padding: 0;
 
@@ -310,7 +310,8 @@ body {
 
 .img-div {
     overflow: hidden;
-    width: 315px;
+    /* width: 225px; */
+    width: auto;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -599,21 +600,18 @@ select {
 }
 
 .homepage-content-div1 {
-    /* border: 2px solid red; */
-
-    display: flex;
-    flex-direction: column;
-    /* flex-wrap: wrap; */
-    /* overflow: scroll; */
-    width: 100%;
-    /* height: auto; */
-    /* margin-top: 25px; */
-    padding: auto;
-    justify-content: center;
-    align-items: center;
+         /* border: 2px solid red; */
     
-    /* padding-bottom: 30px; */
-    /* overflow: scroll; */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+         /* overflow: scroll; */
+        width: 100%;
+         /* margin-top: 25px; */
+        padding: auto;
+        justify-content: flex-start;
+        padding-bottom: 50px;
+        overflow: scroll;
 }
 
 .main-page-content-div {
@@ -623,8 +621,11 @@ select {
 
     display: flex;
     flex-direction: column;
-
-    padding: auto;
+    /* flex-wrap: wrap; */
+    /* gap: auto; */
+    /* padding: 40px; */
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -714,7 +715,7 @@ select {
 
 .section-for-logos img {
     /* width: 55px; */
-    height: 90px;
+    height: 60px;
     width: auto;
 
 }
@@ -756,7 +757,7 @@ select {
 
 .section-for-logos img:hover {
     /* width: 55px; */
-    height: 90px;
+    /* height: 90px; */
     width: auto;
     transform: scale(1.1);
     transition: 1s;
@@ -1113,6 +1114,8 @@ input:checked {
 @media (min-width:500px) {
 
 
+
+
     .sell-offer-div {
         width: 450px;
     }
@@ -1224,6 +1227,33 @@ input:checked {
         margin-top: 70px;
         font-size: 13px;
         background-color: rgb(252, 197, 0);
+    }
+
+    .hide {
+        display: grid;
+    }
+
+    #menu-btn {
+        visibility: hidden;
+        transition: 0s;
+    }
+
+    #menu-btn-filters-hidden {
+        visibility: hidden;
+        transition: 0s;
+    }
+
+    .card {
+        width: 315px;
+        height: 350px;
+        }
+
+    .main-page-content-div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
 
 

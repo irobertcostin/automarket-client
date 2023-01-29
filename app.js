@@ -223,6 +223,8 @@ container.addEventListener("click", async(e)=>{
         container.appendChild(createSuccessEdit())
         
 
+    }else if (obj==document.getElementsByTagName("img")){
+        console.log("test")
     }
 
 
@@ -256,10 +258,8 @@ makerSelector.addEventListener("change", (e)=>{
 
 // BUGS 
 
+// on higher resolution, menu must be activated
 // click search with no params displays nothing 
 // append cars by maker when clicking on brands 
-// API for year filters 
-// API for price filters 
-// API for mileage filters 
 // publish after editing nothing happes
 // if deleting when editing, nothing happens 
