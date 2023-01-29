@@ -223,8 +223,9 @@ container.addEventListener("click", async(e)=>{
         container.appendChild(createSuccessEdit())
         
 
-    }else if (obj==document.getElementsByTagName("img")){
-        console.log("test")
+    }else if (obj.parentNode.id&&obj.parentNode.parentNode.classList.contains("section-for-logos")){
+        console.log(obj.parentNode.id)
+        await getAllCarsByMakerLogo(obj.parentNode.id)
     }
 
 

@@ -1013,6 +1013,22 @@ async function getAllCarsByMaker(param) {
 
 }
 
+async function getAllCarsByMakerLogo(param) {
+
+    let response = await getAllCarsByMakerApi(param);
+    // response=await response.json();
+
+    let contentGrid = document.querySelector(".main-page-content-div")
+    contentGrid.innerHTML="";
+    // contentGridParent.appendChild(homepageContentDiv1())
+    // let contentGrid = document.querySelector(".homepage-content-div1")
+
+    for (let i = 0; i < response.length; i++) {
+        contentGrid.appendChild(createCard(response[i]))
+    }
+
+}
+
 
 // get Car by Id 
 
