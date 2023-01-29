@@ -75,23 +75,7 @@ container.addEventListener("click", async(e)=>{
     })
     } else if (obj.id==="search-filtered-btn"){
 
-        let filteredMaker = document.querySelector(".maker-selector-filters").value;
-        let filteredModel = document.querySelector(".model-selector-filters").value;
-    
-
-    if(filteredModel===""||filteredModel===undefined||filteredModel===NaN){
-
-        // get all cars by maker
-        document.querySelector(".main-page-content-div").innerHTML="";
-        // document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
-        getAllCarsByMaker(filteredMaker);
-        
-        
-    } else {
-        document.querySelector(".main-page-content-div").innerHTML="";
-        // document.querySelector(".main-page-content-div").appendChild(selectedFilters(['test1','test2','test3']))
-        getAllCarsByModel(filteredModel);
-    }
+    await getFilteredCars();
 
     } else if (obj.classList.contains("sell-offer-div-add-button")){
 
@@ -261,6 +245,7 @@ container.addEventListener("click", async(e)=>{
 makerSelector.addEventListener("change", (e)=>{
     let obj = e.target.value;
     document.querySelector(".model-selector-filters").innerHTML=""
+    document.querySelector(".model-selector-filters").appendChild(document.createElement("option"))
     getAllModelsByMaker(obj)
 })
 
@@ -277,3 +262,4 @@ makerSelector.addEventListener("change", (e)=>{
 // API for price filters 
 // API for mileage filters 
 // publish after editing nothing happes
+// if deleting when editing, nothing happens 

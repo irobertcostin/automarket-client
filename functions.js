@@ -303,7 +303,8 @@ function createModelSelector() {
     mainDiv.appendChild(selector)
 
     let testOption2 = document.createElement("option");
-    // selector.appendChild(testOption2);
+    selector.appendChild(testOption2);
+    // testOption2.textContent="test"
 
 
     return mainDiv;
@@ -399,7 +400,7 @@ function createYearSelector() {
 function createPriceOption(obj) {
     let option = document.createElement("option");
     option.id = obj;
-    option.textContent = obj + " EUR";
+    option.textContent = obj + "$";
 
     return option;
 }
@@ -1061,9 +1062,83 @@ async function editCar(car,id){
 }
 
 
-function scrollTo(obj){
 
+
+async function getFilteredCars(){
+
+    let url = `/all-cars/filtered/?`
     
 
+    let maker = document.querySelector(".maker-selector-filters")
+    let model = document.querySelector(".model-selector-filters")
+    let minYear=document.querySelector(".year-from-selector-filters")
+    let maxYear=document.querySelector(".year-from-selector-filters")
+    let minPrice = document.querySelector(".price-from-selector-filters")
+    let maxPrice = document.querySelector(".price-to-selector-filters")
+    let minMil = document.querySelector(".km-from-selector-filters")
+    let maxMil = document.querySelector(".km-to-selector-filters")
+
+
+    let query = {
+
+        maker:maker.value,
+        model:model.value,
+        minYear:minYear.value,
+        maxYear:maxYear.value,
+        minPrice:minPrice.value.replace("$",""),
+        maxPrice:maxPrice.value.replace("$",""),
+        minMil:minMil.value,
+        maxMil:maxMil.value,
+    }
+
+    if(query.maker){
+        url+=`maker=${query.maker}`
+    }
+
+    if(query.model){
+        url+=`&model=${query.model}`
+    }
+
+    if(query.minYear){
+
+        url+=`&minYear=${query.minYear}`
+    }
+
+
+    if(query.maxYear){
+
+        url+=`&maxYear=${query.maxYear}`
+    }
+
+    if(query.minPrice){
+
+        url+=`&minPrice=${query.minPrice}`
+    }
+
+    if(query.maxPrice){
+
+        url+=`&maxPrice=${query.maxPrice}`
+    }
+
+    if(query.minMil){
+
+        url+=`&minMil=${query.minMil}`
+    }
+
+    if(query.maxMil){
+
+        url+=`&maxMil=${query.maxMil}`
+    }
+
+    console.log(url)
+
+    arr = await getFilteredCarsApi(url);
+
+    document.querySelector(".main-page-content-div").innerHTML="";
+    for(let i =0;i<arr.length;i++){
+
+        document.querySelector(".main-page-content-div").appendChild(createCard(arr[i]));
+
+    }
 
 }

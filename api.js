@@ -77,6 +77,20 @@ async function getCarByIdApi(id) {
 }
 
 
+async function getFilteredCarsApi(url){
+
+    
+
+
+    let arr = await api(url)
+
+
+    return arr.json();
+    
+
+}
+
+
 
 async function addCar(car){
 
