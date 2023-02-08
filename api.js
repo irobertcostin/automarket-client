@@ -13,14 +13,16 @@ function api(path, method='GET', body=null){
                 'Content-Type':'application/json; charset=utf-8',
                 'X-Requested-With': 'XMLHttpRequest'
             },
+
+            
         
 
         };
 
         if(body!==null){
             options.body = JSON.stringify(body);
-
-
+            
+            
             // stringify transforma din javascript in json 
             // parse transforma din json in javascript
         }
@@ -34,7 +36,6 @@ function api(path, method='GET', body=null){
 async function getCarsApi(){
 
     let data = await api(`/all-cars`)
-
     return data.json();
 }
 
@@ -109,8 +110,37 @@ async function deleteCar(id){
 
 async function editCarApi(car,id){
 
+    try{
+
+
     let data = await api('/edit-car/car-id='+id,"PUT",car);
-    return data.json();
+
+    // console.log(data);
+
+    if(data.status!=204){
+
+
+        let response= await data.json();
+        
+        alert(response.error.message)
+
+
+        
+    } else if(data.status===204) {
+
+        console.log("ok")
+        // return data.json(car);
+    }
+    
+    }catch(e){
+
+
+        console.log(e);
+
+    }
+
+
+    
 
 
 }

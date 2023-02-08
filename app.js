@@ -201,27 +201,34 @@ container.addEventListener("click", async(e)=>{
 
         let id = document.querySelector(".div-for-edit-page").firstElementChild.id
         // console.log(id)
-        let car = {
+
+
+        // console.log(document.querySelector(".edit-maker-input").lastElementChild.value)
+        // console.log(document.querySelector(".edit-model-input").lastElementChild.value)
+        // console.log(document.querySelector(".edit-year-input").lastElementChild.value)
+        // console.log(document.querySelector(".edit-price-input").lastElementChild.value)
+        // console.log(document.querySelector(".edit-km-input").lastElementChild.value)
+        
+            let car = {
     
-            maker:document.querySelector(".edit-maker-input").lastElementChild.value,
-            model:document.querySelector(".edit-model-input").lastElementChild.value,
-            year:+document.querySelector(".edit-year-input").lastElementChild.value,
-            price:document.querySelector(".edit-price-input").lastElementChild.value,
-            mileage:+document.querySelector(".edit-km-input").lastElementChild.value
-        }
+                maker:document.querySelector(".edit-maker-input").lastElementChild.value,
+                model:document.querySelector(".edit-model-input").lastElementChild.value,
+                year:+document.querySelector(".edit-year-input").lastElementChild.value,
+                price:document.querySelector(".edit-price-input").lastElementChild.value,
+                mileage:+document.querySelector(".edit-km-input").lastElementChild.value
+            }
 
-        // console.log(car)
-        
-        await editCar(car,id);
 
-        let masina = await getCarById(id);
-        document.querySelector(".div-for-edit-page").removeChild(document.querySelector(".card"))
-        document.querySelector(".div-for-edit-page").insertBefore(createCard(masina),document.querySelector(".edit-offer-div"))
-        
+            // console.log("test")
+            await editCar(car,id);
 
-        // document.querySelector(".div-for-edit-page").remove(document.querySelector(".card"))
-        container.appendChild(createSuccessEdit())
-        
+            let masina = await getCarById(id);
+            document.querySelector(".div-for-edit-page").removeChild(document.querySelector(".card"))
+            document.querySelector(".div-for-edit-page").insertBefore(createCard(masina),document.querySelector(".edit-offer-div"))
+            
+    
+            // document.querySelector(".div-for-edit-page").remove(document.querySelector(".card"))
+            container.appendChild(createSuccessEdit())
 
     }else if (obj.parentNode.id&&obj.parentNode.parentNode.classList.contains("section-for-logos")){
         console.log(obj.parentNode.id)
@@ -257,10 +264,5 @@ makerSelector.addEventListener("change", (e)=>{
 
 
 
-// BUGS 
 
-// on higher resolution, menu must be activated
-// click search with no params displays nothing 
-// append cars by maker when clicking on brands 
-// publish after editing nothing happes
-// if deleting when editing, nothing happens 
+// when EDIT, if setup on client for input.value != "", no error from back-end, because it does not pass

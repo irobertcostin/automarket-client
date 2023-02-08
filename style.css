@@ -1192,7 +1192,7 @@ input:checked {
         /* overflow: scroll; */
         width: 100%;
         /* margin-top: 25px; */
-        padding: auto;
+        padding: 0;
         justify-content: flex-start;
         /* padding-bottom: 30px; */
         overflow: scroll;
