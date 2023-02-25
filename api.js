@@ -92,7 +92,6 @@ async function getFilteredCarsApi(url){
 }
 
 
-
 async function addCar(car){
 
     let data = await api('/new-car',"POST",car);
@@ -100,11 +99,15 @@ async function addCar(car){
     return data.json();
 }
 
+
+
+
+
 async function deleteCar(id){
 
     let data = await api('/all-cars/delete/id='+id,"DELETE");
 
-    return data.json();
+    // return data.json();
 }
 
 

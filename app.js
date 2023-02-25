@@ -200,15 +200,9 @@ container.addEventListener("click", async(e)=>{
     }else if(obj.classList.contains("edit-offer-div-add-button")){
 
         let id = document.querySelector(".div-for-edit-page").firstElementChild.id
-        // console.log(id)
 
-
-        // console.log(document.querySelector(".edit-maker-input").lastElementChild.value)
-        // console.log(document.querySelector(".edit-model-input").lastElementChild.value)
-        // console.log(document.querySelector(".edit-year-input").lastElementChild.value)
-        // console.log(document.querySelector(".edit-price-input").lastElementChild.value)
-        // console.log(document.querySelector(".edit-km-input").lastElementChild.value)
-        
+        try {
+            
             let car = {
     
                 maker:document.querySelector(".edit-maker-input").lastElementChild.value,
@@ -217,21 +211,23 @@ container.addEventListener("click", async(e)=>{
                 price:document.querySelector(".edit-price-input").lastElementChild.value,
                 mileage:+document.querySelector(".edit-km-input").lastElementChild.value
             }
-
-
-            // console.log("test")
             await editCar(car,id);
-
             let masina = await getCarById(id);
             document.querySelector(".div-for-edit-page").removeChild(document.querySelector(".card"))
             document.querySelector(".div-for-edit-page").insertBefore(createCard(masina),document.querySelector(".edit-offer-div"))
-            
-    
-            // document.querySelector(".div-for-edit-page").remove(document.querySelector(".card"))
             container.appendChild(createSuccessEdit())
 
+
+        } catch (error) {
+            console.log(error)
+
+        }
+
+
+    
+
     }else if (obj.parentNode.id&&obj.parentNode.parentNode.classList.contains("section-for-logos")){
-        console.log(obj.parentNode.id)
+        // console.log(obj.parentNode.id)
         await getAllCarsByMakerLogo(obj.parentNode.id)
     }
 
@@ -265,4 +261,5 @@ makerSelector.addEventListener("change", (e)=>{
 
 
 
-// when EDIT, if setup on client for input.value != "", no error from back-end, because it does not pass
+// when edit, even if internal server error, success is shown
+// tried with try / catch , still creating successAdd
